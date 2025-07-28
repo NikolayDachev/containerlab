@@ -39,6 +39,13 @@ vrf definition acx1100
 vrf definition OOB
  exit
 !
+interface loopback0
+ vrf forwarding acx1100
+ ipv4 address 10.255.102.1 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
 interface ethernet1
  vrf forwarding acx1100
  ipv4 address 192.168.102.2 255.255.255.252
@@ -52,6 +59,22 @@ interface ethernet255
  ipv4 address 172.16.100.102 255.255.255.0
  no shutdown
  no log-link-change
+ exit
+!
+router bgp4 65102
+ vrf acx1100
+ local-as 65102
+ router-id 192.168.102.2
+ no safe-ebgp
+ address-family unicast
+ !
+ neighbor 192.168.102.1 remote-as 65000
+ neighbor 192.168.102.1 local-as 65102
+ neighbor 192.168.102.1 address-family unicast
+ neighbor 192.168.102.1 distance 20
+ !
+ !
+ redistribute connected
  exit
 !
 console0
