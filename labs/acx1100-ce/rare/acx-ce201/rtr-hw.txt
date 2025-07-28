@@ -1,4 +1,0 @@
-hwid xxx
-proc ifc1.sh /rtr/run/conf/pcapInt.bin eth1 20002 127.0.0.1 20001 127.0.0.1
-int ether1 eth aa:c1:ab:47:8b:35 127.0.0.1 20001 127.0.0.1 20002
-tcp2vrf 2323 OOB 23

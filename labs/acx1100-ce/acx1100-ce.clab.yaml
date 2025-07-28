@@ -15,25 +15,21 @@ topology:
       group: rare
       mgmt-ipv4: 172.16.100.101
       binds:
-        - rare/acx-ce101/rtr-hw.txt:/rtr/run/conf/rtr-hw.txt
         - rare/acx-ce101/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
     acx-ce102:
       group: rare
       mgmt-ipv4: 172.16.100.102
       binds:
-        - rare/acx-ce102/rtr-hw.txt:/rtr/run/conf/rtr-hw.txt
         - rare/acx-ce102/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
     acx-ce201:
       group: rare
       mgmt-ipv4: 172.16.100.201
       binds:
-        - rare/acx-ce201/rtr-hw.txt:/rtr/run/conf/rtr-hw.txt
         - rare/acx-ce201/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
     acx-ce202:
       group: rare
       mgmt-ipv4: 172.16.100.202
       binds:
-        - rare/acx-ce202/rtr-hw.txt:/rtr/run/conf/rtr-hw.txt
         - rare/acx-ce202/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
     br-vlan101:
       kind: bridge

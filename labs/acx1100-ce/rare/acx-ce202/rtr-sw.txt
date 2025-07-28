@@ -49,7 +49,7 @@ interface ethernet1
 interface ethernet255
  description OOB
  vrf forwarding OOB
- ipv4 address 172.16.100.201 255.255.255.0
+ ipv4 address 172.16.100.202 255.255.255.0
  no shutdown
  no log-link-change
  exit
