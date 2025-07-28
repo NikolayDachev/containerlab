@@ -1,0 +1,51 @@
+name: acx1100-ce
+
+mgmt:
+  network: acx1100_mgmt
+  ipv4-subnet: 172.16.100.0/24
+
+topology:
+  groups:
+    rare:
+      kind: rare
+      image: freertr-containerlab:latest
+
+  nodes:
+    acx-ce101:
+      group: rare
+      mgmt-ipv4: 172.16.100.101
+      binds:
+        - rare/acx-ce101/rtr-hw.txt:/rtr/run/conf/rtr-hw.txt
+        - rare/acx-ce101/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
+    acx-ce102:
+      group: rare
+      mgmt-ipv4: 172.16.100.102
+      binds:
+        - rare/acx-ce102/rtr-hw.txt:/rtr/run/conf/rtr-hw.txt
+        - rare/acx-ce102/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
+    acx-ce201:
+      group: rare
+      mgmt-ipv4: 172.16.100.201
+      binds:
+        - rare/acx-ce201/rtr-hw.txt:/rtr/run/conf/rtr-hw.txt
+        - rare/acx-ce201/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
+    acx-ce202:
+      group: rare
+      mgmt-ipv4: 172.16.100.202
+      binds:
+        - rare/acx-ce202/rtr-hw.txt:/rtr/run/conf/rtr-hw.txt
+        - rare/acx-ce202/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
+    br-vlan101:
+      kind: bridge
+    br-vlan102:
+      kind: bridge
+    br-vlan201:
+      kind: bridge
+    br-vlan202:
+      kind: bridge
+
+  links:
+    - endpoints: ["acx-ce101:eth1", "br-vlan101:acx-ce101"]
+    - endpoints: ["acx-ce102:eth1", "br-vlan102:acx-ce102"]
+    - endpoints: ["acx-ce201:eth1", "br-vlan201:acx-ce201"]
+    - endpoints: ["acx-ce202:eth1", "br-vlan202:acx-ce202"]
