@@ -46,6 +46,14 @@ interface ethernet1
  no log-link-change
  exit
 !
+interface ethernet255
+ description OOB
+ vrf forwarding OOB
+ ipv4 address 172.16.100.201 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
 console0
  no exec authorization
  no login authentication
