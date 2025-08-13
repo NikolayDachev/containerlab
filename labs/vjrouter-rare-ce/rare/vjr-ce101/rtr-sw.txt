@@ -33,10 +33,10 @@ prefix-list ALL6
  sequence 10 permit ::/0 ge 0 le 0
  exit
 !
-vrf definition vjr
+vrf definition OOB
  exit
 !
-vrf definition OOB
+vrf definition vjr
  exit
 !
 interface loopback0

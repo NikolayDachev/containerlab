@@ -18,6 +18,7 @@ topology:
     vjr:
       group: vjrouter
       mgmt-ipv4: 172.16.100.10
+      startup-config: vjrouter/vjr/config.txt
 
     vjr-ce101:
       group: rare
