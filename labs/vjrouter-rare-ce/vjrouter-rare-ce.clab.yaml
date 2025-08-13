@@ -17,7 +17,7 @@ topology:
   nodes:
     vjr:
       group: vjrouter
-      mgmt-ipv4: 172.16.100.1
+      mgmt-ipv4: 172.16.100.10
 
     vjr-ce101:
       group: rare
