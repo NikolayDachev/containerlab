@@ -33,21 +33,21 @@ prefix-list ALL6
  sequence 10 permit ::/0 ge 0 le 0
  exit
 !
-vrf definition acx1100
+vrf definition vjr
  exit
 !
 vrf definition OOB
  exit
 !
 interface loopback0
- vrf forwarding acx1100
+ vrf forwarding vjr
  ipv4 address 10.255.101.1 255.255.255.0
  no shutdown
  no log-link-change
  exit
 !
 interface ethernet1
- vrf forwarding acx1100
+ vrf forwarding vjr
  ipv4 address 192.168.101.2 255.255.255.252
  no shutdown
  no log-link-change
@@ -62,7 +62,7 @@ interface ethernet255
  exit
 !
 router bgp4 65101
- vrf acx1100
+ vrf vjr
  local-as 65101
  router-id 192.168.101.2
  no safe-ebgp

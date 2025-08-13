@@ -1,1 +1,58 @@
-#
+system {
+    host-name vjr;
+    root-authentication {
+        encrypted-password "$6$HGk454EL$RXzWURu./jZftTwhpWe05SUi20i2WR47DeiytQmxDb2v6xYkQ3IhzhehpHXeXqDg/DTZJ6dV1c5WEC71VpVbM1"; ## SECRET-DATA
+    }
+    login {
+        user admin {
+            uid 2000;
+            class super-user;
+            authentication {
+                encrypted-password "$6$WaF/U7zp$v9LIL33eb7Z7S3cs3WSYFcP6quLYlnKIIrPG9MEKghW7be8JImYlkqXOFsC/hQd3egdK6TUPuRZa0ZUcR859I0"; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        netconf {
+            ssh;
+        }
+        ssh {
+            root-login allow;
+        }
+    }
+    domain-name lab.lan;
+    management-instance;
+}
+chassis {
+    fpc 0 {
+        pic 0 {
+            number-of-ports 12;
+        }
+    }
+}
+interfaces {
+    fxp0 {
+        unit 0 {
+            family inet {
+                address 10.0.0.15/24;
+            }
+            family inet6 {
+                address 2001:db8::2/64;
+            }
+        }
+    }
+}
+routing-instances {
+    mgmt_junos {
+        routing-options {
+            rib mgmt_junos.inet6.0 {
+                static {
+                    route ::/0 next-hop 2001:db8::1;
+                }
+            }
+            static {
+                route 0.0.0.0/0 next-hop 10.0.0.2;
+            }
+        }
+    }
+}
