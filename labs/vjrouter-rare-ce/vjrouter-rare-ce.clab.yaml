@@ -1,7 +1,7 @@
-name: acx1100-ce
+name: vjr-rare-ce
 
 mgmt:
-  network: acx1100_mgmt
+  network: vjr-rare_mgmt
   ipv4-subnet: 172.16.100.0/24
 
 topology:
@@ -9,6 +9,7 @@ topology:
     vjrouter:
       kind: juniper_vjunosrouter
       image: vrnetlab/juniper_vjunos-router:24.2R1-S2.5
+
     rare:
       kind: rare
       image: freertr-containerlab:latest
@@ -16,30 +17,31 @@ topology:
   nodes:
     vjr:
       group: vjrouter
-      mgmt-ipv4: 172.16.0.1
-    jvr-ce101:
+      mgmt-ipv4: 172.16.100.1
+
+    vjr-ce101:
       group: rare
       mgmt-ipv4: 172.16.100.101
       binds:
         - rare/acx-ce101/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
-    jvr-ce102:
+    vjr-ce102:
       group: rare
       mgmt-ipv4: 172.16.100.102
       binds:
         - rare/acx-ce102/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
-    jvr-ce201:
+    vjr-ce201:
       group: rare
       mgmt-ipv4: 172.16.100.201
       binds:
         - rare/acx-ce201/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
-    jvr-ce202:
+    vjr-ce202:
       group: rare
       mgmt-ipv4: 172.16.100.202
       binds:
         - rare/acx-ce202/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
 
   links:
-    - endpoints: ["jvr-ce101:eth1", "vjr:ge-0/0/1"]
-    - endpoints: ["jvr-ce102:eth1", "vjr:ge-0/0/2"]
-    - endpoints: ["jvr-ce201:eth1", "vjr:ge-0/0/3"]
-    - endpoints: ["jvr-ce202:eth1", "vjr:ge-0/0/4"]
+    - endpoints: ["vjr-ce101:eth1", "vjr:ge-0/0/1"]
+    - endpoints: ["vjr-ce102:eth1", "vjr:ge-0/0/2"]
+    - endpoints: ["vjr-ce201:eth1", "vjr:ge-0/0/3"]
+    - endpoints: ["vjr-ce202:eth1", "vjr:ge-0/0/4"]
