@@ -23,22 +23,22 @@ topology:
       group: rare
       mgmt-ipv4: 172.16.100.101
       binds:
-        - rare/acx-ce101/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
+        - rare/vjr-ce101/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
     vjr-ce102:
       group: rare
       mgmt-ipv4: 172.16.100.102
       binds:
-        - rare/acx-ce102/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
+        - rare/vjr-ce102/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
     vjr-ce201:
       group: rare
       mgmt-ipv4: 172.16.100.201
       binds:
-        - rare/acx-ce201/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
+        - rare/vjr-ce201/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
     vjr-ce202:
       group: rare
       mgmt-ipv4: 172.16.100.202
       binds:
-        - rare/acx-ce202/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
+        - rare/vjr-ce202/rtr-sw.txt:/rtr/run/conf/rtr-sw.txt
 
   links:
     - endpoints: ["vjr-ce101:eth1", "vjr:ge-0/0/1"]
