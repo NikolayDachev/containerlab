@@ -26,6 +26,9 @@ system {
 chassis {
     fpc 0 {
         pic 0 {
+            tunnel-services {
+                bandwidth 1g;
+            }
             number-of-ports 12;
         }
     }
@@ -55,4 +58,4 @@ routing-instances {
             }
         }
     }
-}
+}                           
