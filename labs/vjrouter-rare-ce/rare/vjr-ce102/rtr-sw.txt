@@ -1,4 +1,4 @@
-hostname acx-ce102
+hostname vjr-ce102
 buggy
 !
 logging buffered debug 10240
