@@ -127,6 +127,21 @@ server telnet OOB
  vrf OOB
  exit
 !
+server telnet vjr
+ security protocol ssh
+ security authentication usr
+ security rsakey rsa
+ security dsakey dsa
+ security ecdsakey ecdsa
+ security mldsakey mldsa
+ port 22
+ exec logging
+ no exec authorization
+ login authentication usr
+ login logging
+ vrf vjr
+ exit
+!
 client proxy OOB
 client capture-path /rtr/run/pcap/
 client name-server 1.1.1.1
