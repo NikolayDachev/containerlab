@@ -41,14 +41,16 @@ vrf definition vjr
 !
 interface loopback0
  vrf forwarding vjr
- ipv4 address 10.255.202.1 255.255.255.0
+ ipv4 address 10.255.202.1 255.255.255.255
  no shutdown
  no log-link-change
  exit
 !
 interface ethernet1
  vrf forwarding vjr
- ipv4 address 192.168.202.2 255.255.255.252
+ ipv4 address 0.0.0.0 255.255.255.255
+ ipv4 gateway-prefix ALL4
+ ipv4 dhcp-client enable
  no shutdown
  no log-link-change
  exit
@@ -59,22 +61,6 @@ interface ethernet255
  ipv4 address 172.16.100.202 255.255.255.0
  no shutdown
  no log-link-change
- exit
-!
-router bgp4 65202
- vrf vjr
- local-as 65202
- router-id 192.168.202.2
- no safe-ebgp
- address-family unicast
- !
- neighbor 192.168.202.1 remote-as 65000
- neighbor 192.168.202.1 local-as 65202
- neighbor 192.168.202.1 address-family unicast
- neighbor 192.168.202.1 distance 20
- !
- !
- redistribute connected
  exit
 !
 console0
