@@ -132,6 +132,7 @@ server dhcp4 vjr
  dns-server 8.8.8.8 8.8.4.4
  domain-name ce2-l2vpn.lan
  interface ethernet1
+ vrf vjr
  exit
 !
 client proxy OOB
